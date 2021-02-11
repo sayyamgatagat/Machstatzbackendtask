@@ -15,7 +15,7 @@ with open('./static/sample_json_3.json') as json_data:
 #default route to give out instructions
 @app.route('/')
 def giveInstructions():
-    details = "For Question 1 :<br>visit site/Q1/startTime/endTime<br><br>For Question 2 :<br>visit site/Q1/startTime/endTime<br><br>For Question 3 :<br>visit site/Q3/startTime/endTime<br><br>Format for startTime and endTime:<br><br>%Y-%m-%dT%H:%M:%SZ<br>ex : 2021-01-28T12:00:00Z"
+    details = "For Question 1 :<br>GET https://backendinterntask.herokuapp.com/Q1/2021-01-28T12:00:00Z/2021-01-28T19:00:00Z<br><br>For Question 2 :<br>GET https://backendinterntask.herokuapp.com/Q2/2021-01-28T12:00:00Z/2021-01-28T19:00:00Z<br><br>For Question 3 :<br>GET https://backendinterntask.herokuapp.com/Q3/2021-01-28T12:00:00Z/2021-01-28T19:00:00Z<br><br>For custom endpoints replace dates in the URLs<br><br>Format for startTime and endTime:<br><br>%Y-%m-%dT%H:%M:%SZ<br>ex : 2021-01-28T12:00:00Z"
     return details
 
 #Question 1
