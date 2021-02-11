@@ -1,7 +1,7 @@
 from flask import Flask, render_template, json, url_for
 from datetime import datetime, timedelta, date, time
 
-api = Flask(__name__)
+app = Flask(__name__)
 istTimeDelta = timedelta(hours = 5,minutes = 30)
 
 
@@ -13,13 +13,13 @@ with open('./static/sample_json_3.json') as json_data:
     data3 = json.load(json_data)
 
 #default route to give out instructions
-@api.route('/')
+@app.route('/')
 def giveInstructions():
     details = "For Question 1 :<br>visit site/Q1/startTime/endTime<br><br>For Question 2 :<br>visit site/Q1/startTime/endTime<br><br>For Question 3 :<br>visit site/Q3/startTime/endTime<br><br>Format for startTime and endTime:<br><br>%Y-%m-%dT%H:%M:%SZ<br>ex : 2021-01-28T12:00:00Z"
     return details
 
 #Question 1
-@api.route('/Q1/<string:startTime>/<string:endTime>')
+@app.route('/Q1/<string:startTime>/<string:endTime>')
 def Q1(startTime,endTime):
     Astart = time(6,0)
     Aend = time(14,0)
@@ -58,7 +58,7 @@ def Q1(startTime,endTime):
     return json.dumps(result,indent=4herok,sort_keys=False)
 
 #Question 2
-@api.route('/Q2/<string:startTime>/<string:endTime>')
+@app.route('/Q2/<string:startTime>/<string:endTime>')
 def Q2(startTime,endTime):
 
     result = {
@@ -114,7 +114,7 @@ def Q2(startTime,endTime):
     return json.dumps(result,indent=4,sort_keys=False)
 
 #Question 3
-@api.route('/Q3/<string:startTime>/<string:endTime>')
+@app.route('/Q3/<string:startTime>/<string:endTime>')
 def Q3(startTime,endTime):
 
     result = []
@@ -156,4 +156,4 @@ def Q3(startTime,endTime):
     return json.dumps(result,indent=4,sort_keys=False)
 
 if __name__ == "__main__":
-    api.run(debug=True)
+    app.run(debug=True)
