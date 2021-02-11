@@ -55,7 +55,7 @@ def Q1(startTime,endTime):
         else:
             return "No Data Available for given date."
 
-    return json.dumps(result,indent=4herok,sort_keys=False)
+    return json.dumps(result,indent=4,sort_keys=False)
 
 #Question 2
 @app.route('/Q2/<string:startTime>/<string:endTime>')
